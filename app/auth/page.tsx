@@ -3,6 +3,9 @@
 import { useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 import { User, Mail, Lock, Eye, EyeOff, ArrowRight, Sparkles } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+
+
 
 function Page() {
   const searchParams = useSearchParams();
@@ -15,10 +18,20 @@ function Page() {
     name: ''
   });
 
+  const router = useRouter();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+     // 1. Authenticate user here (API / Supabase / NextAuth etc)
+  // await loginOrSignup(formData)
+
+  // 2. Redirect based on role
+  if (role === 'editor') {
+    router.push('/editor');
+  } else if (role === 'creator') {
+    router.push('/creator');
+  } else {
+    router.push('/'); // fallback safety
+  }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,6 +48,8 @@ function Page() {
   const gradientHoverTo = isCreator ? 'to-purple-700' : 'to-emerald-700';
   const cardGlow = isCreator ? 'shadow-blue-500/20' : 'shadow-green-500/20';
   const textColor = isCreator ? 'text-blue-400' : 'text-green-400';
+
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-950 to-black">
