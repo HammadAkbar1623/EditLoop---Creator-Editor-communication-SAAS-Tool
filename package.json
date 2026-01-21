@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.1693.0",
+    "bcryptjs": "^3.0.3",
     "framer-motion": "^12.27.0",
     "lucide-react": "^0.562.0",
     "mongoose": "^9.1.4",

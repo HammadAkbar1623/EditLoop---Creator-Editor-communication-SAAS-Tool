@@ -1,19 +1,18 @@
 import mongoose, {Schema, models, model} from "mongoose";
 
 const EditorProfileSchema = new Schema({
-    Skills: { type: [String], default: [] },
+    skills: { type: [String], default: [] },
 
-    RateType: {
+    rateType: {
         type: String,
         enum: ['per_project', 'per_hour', 'per_video'],
 
     },
-    Rate: { type: Number, default: 0 },
-    PortfolioLinks: { type: [String], default: [] },
-    Available: { type: Boolean, default: true },
-    Rating: { type: Number, default: 0 },
-    ReviewsCount: { type: Number, default: 0 },
-
+    rate: { type: Number, default: 0 },
+    portfolioLinks: { type: [String], default: [] },
+    available: { type: Boolean, default: true },
+    rating: { type: Number, default: 0 },
+    reviewsCount: { type: Number, default: 0 },
     
 },
     {_id: false},
